@@ -29,6 +29,7 @@ gem "actiontext", require: "action_text"
 gem "image_processing", "~> 1.2"
 
 gem 'devise',       '4.6.2'
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
@@ -39,6 +40,7 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.3.1'
 gem 'simple_form'
+
 
 
 
