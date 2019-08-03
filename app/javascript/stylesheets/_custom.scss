@@ -16,6 +16,39 @@ $gray-medium-light: #909598;
 }
 
 
+.avatar_small {
+  width: 28px;
+}
+
+.avatar_medium {
+  width: 48px;
+}
+
+.avatar_large {
+  width: 68px;
+}
+
+.avatar_full {
+  width: 100%;
+}
+
+#body-signup {
+  background:url(../../assets/images/green-wall.jpg) no-repeat;
+  padding-top:100px;
+  background-size:cover;
+  background-position: center center;
+  z-index: 0;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.mr-n3,
+.mx-n3 {
+  margin-right: -1rem !important;
+}
+
 /* miscellaneous */
 
 .debug_dump {
@@ -91,7 +124,7 @@ h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
+  text-align: left;
   font-weight: normal;
   color: $gray-light;
 }

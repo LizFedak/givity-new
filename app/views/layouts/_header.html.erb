@@ -33,7 +33,8 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= image_tag("alien.png", alt: "Account", size: "16") %>
+                      <%= image_tag avatar_url(current_user), class: "avatar_small rounded-circle" %> &nbsp;
+                      <%= current_user.fullname %>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li class="dropdown-item"><%= link_to "Edit Profile", edit_user_registration_path %></li>

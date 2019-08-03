@@ -1,6 +1,13 @@
+<body id="body-signup" class="bg-cover h-100 mr-n3"> 
 
+<div class="container-fluid px-3">
+  <div class="row min-vh-100">
+    <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
+      <div class="w-100 py-5 px-md-5 px-xl-6 position-relative">
+      
 
 <h2>Sign up</h2>
+<p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -32,8 +39,28 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-lg btn-block btn-primary" %>
   </div>
 <% end %>
 
+  <hr data-content="OR" class="my-3 hr-text letter-spacing-2">
+    <button class="btn btn btn-outline-primary btn-block btn-social mb-3"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
+    <button class="btn btn btn-outline-dark btn-block btn-social mb-3"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
+  <hr class="my-4">
+
 <%= render "devise/shared/links" %>
+
+
+
+
+
+      </div>
+
+      <div class="signup-background"></div>
+
+
+    </div>
+  </div>
+</div>
+      
+</body>
