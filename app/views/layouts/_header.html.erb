@@ -1,31 +1,55 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
-      <%= link_to "Givity", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Explore",   explore_path %></li>
-          <li><%= link_to "Blog",   blog_path %></li>
-          <% if user_signed_in? %>
-          <li><%= link_to "Saved", '#' %></li>
-          <li><%= link_to "Messages", '#' %></li>
-            <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag("alien.png", alt: "Account", size: "16") %><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                <li><%= link_to "Account", '#' %></li>
-                <li><%= link_to "Invite Friends", '#' %></li>
-                <li><%= link_to "Your Stuff", '#' %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to 'Log In', new_user_session_path %></li>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  
-  
+
+
+<div id="app" class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Givity</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li>
+                     <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <a class="nav-link waves-effect waves-light">1
+                    <i class="mdi mdi-accessibility"></i>
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                    </div>
+                </li>
+                <% else %>
+                <li class="nav-item active">
+                    <%= link_to "Explore",   explore_path %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Blog",   blog_path %>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/register') }}">Register</a>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+    </nav>
+</div>
