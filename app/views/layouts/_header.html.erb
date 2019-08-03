@@ -1,5 +1,3 @@
-
-
 <div id="app" class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Givity</a>
@@ -14,41 +12,39 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
                 </li>
-
             </ul>
+
             <ul class="navbar-nav">
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <a class="nav-link waves-effect waves-light">1
-                    <i class="mdi mdi-accessibility"></i>
-                  </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                    </div>
-                </li>
-                <% else %>
-                <li class="nav-item active">
+              
+                <li class="nav-item nav-link">
                     <%= link_to "Explore",   explore_path %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-link">
                     <%= link_to "Blog",   blog_path %>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+
+                
+
+                <% if user_signed_in? %>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%= image_tag("alien.png", alt: "Account", size: "16") %>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="dropdown-item"><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                        <li class="dropdown-item"><%= link_to "Account", '#' %></li>
+                        <li class="dropdown-item"><%= link_to "Your Stuff", '#' %></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-item"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/register') }}">Register</a>
-                </li>
-                <% end %>
+                <% else %>
+            <li class="nav-item nav-link"><%= link_to 'Log In', new_user_session_path %></li>
+            <li class="nav-item nav-link"><%= link_to 'Sign Up', new_user_registration_path %></li>
+
+              <% end %>
+              
             </ul>
         </div>
     </nav>
