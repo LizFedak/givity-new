@@ -97,10 +97,14 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.8.0)
+    ethon (0.12.0)
+      ffi (>= 1.3.0)
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
+    figaro (1.1.1)
+      thor (~> 0.14)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
@@ -115,6 +119,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    json (2.2.0)
     jwt (2.2.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -127,11 +132,6 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    material-sass (4.1.1)
-      autoprefixer-rails (>= 6.0.3)
-      sass (>= 3.5.2)
-    material_icons (2.2.1)
-      railties (>= 3.2)
     method_source (0.9.2)
     mimemagic (0.3.3)
     mini_magick (4.9.5)
@@ -233,6 +233,9 @@ GEM
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    sib-api-v3-sdk (5.2.5)
+      json (~> 2.1, >= 2.1.0)
+      typhoeus (~> 1.0, >= 1.0.1)
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -254,6 +257,8 @@ GEM
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
+    typhoeus (1.3.1)
+      ethon (>= 0.9.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     warden (1.2.8)
@@ -292,12 +297,11 @@ DEPENDENCIES
   capybara (>= 2.15)
   coffee-rails (= 4.2.2)
   devise (= 4.6.2)
+  figaro
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails (= 4.3.1)
   listen (>= 3.0.5, < 3.2)
-  material-sass (= 4.1.1)
-  material_icons
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
@@ -307,6 +311,7 @@ DEPENDENCIES
   rails (~> 6.0.0.rc2)
   sass-rails (~> 5)
   selenium-webdriver
+  sib-api-v3-sdk
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

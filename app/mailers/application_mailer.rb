@@ -1,4 +1,9 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  def initialize
+    @send_in_blue = SibApiV3Sdk::SMTPApi.new
+  end
+
+
+  default from: 'liz@givitytesttest.com'
   layout 'mailer'
 end
