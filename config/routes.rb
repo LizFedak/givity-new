@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
   
+  resources :profiles
+  resources :volunteer_profiles
+  resources :posts
+
+  resources :experiences, except: [:edit] do
+    member do
+      get 'listing'
+      get 'pricing'
+      get 'description'
+      get 'photo-upload'
+      get 'location'
+    end
+  end
+
+  get '/my_experiences', to: 'experiences#personal_index'
+
   root 'basic_pages#home'
 
   get  '/help', to: 'basic_pages#help'
@@ -13,14 +29,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
   
-  get 'posts/new'
-  get 'posts/create'
-  get 'posts/show'
-  get 'posts/edit'
-  get 'posts/update'
-  get 'posts/destroy'
 
-  resources :posts
+  
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,8 +1,20 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
+  has_many :experiences 
+  has_one :volunteer_profile, :dependent => :destroy
+  before_create :create_volunteer_profile
+
+  def create_volunteer_profile
+    volunteer_profile = build_volunteer_profile(:tagline => "Tagline") 
+  end
+
+
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
+
+  
 
          def self.find_for_oauth(auth)
           user = User.where(uid: auth.uid, provider: auth.provider).first

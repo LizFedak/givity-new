@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_03_174032) do
+ActiveRecord::Schema.define(version: 2019_08_05_210619) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -43,10 +43,29 @@ ActiveRecord::Schema.define(version: 2019_08_03_174032) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "experiences", force: :cascade do |t|
+    t.string "experience_type"
+    t.integer "guest_limit"
+    t.string "listing_name"
+    t.text "summary"
+    t.string "address"
+    t.boolean "is_free"
+    t.boolean "is_public"
+    t.boolean "ada_accessible"
+    t.integer "price"
+    t.boolean "active"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_experiences_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_174032) do
     t.string "provider"
     t.string "uid"
     t.string "fullname"
+    t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"
@@ -81,5 +101,16 @@ ActiveRecord::Schema.define(version: 2019_08_03_174032) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  create_table "volunteer_profiles", force: :cascade do |t|
+    t.string "tagline"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_volunteer_profiles_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "experiences", "users"
+  add_foreign_key "posts", "users"
+  add_foreign_key "volunteer_profiles", "users"
 end
