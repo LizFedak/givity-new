@@ -263,8 +263,11 @@ Devise.setup do |config|
   require 'omniauth-twitter'
   require 'omniauth-facebook'
   
-  config.omniauth :twitter, 'doR78H4EemK8FA7gdu8KhE6mq', 'shgVREstYvlZ3XRgyE1TRpV3fCMD6lhaUTaaekWYitvAioevqC'
-  config.omniauth :facebook, '2966699406737421', 'fdaa0ca1ec4db8ee8ccd7f3f9ea4d082'
+
+  config.omniauth :facebook, ENV["facebook_api_id"], ENV["facebook_api_secret"]
+
+  config.omniauth :twitter, ENV["twitter_api_id"], ENV["twitter_api_secret"]
+
   
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
