@@ -1,0 +1,6 @@
+<%= render 'users/users_menu' %>
+<%= simple_form_for @user do |f| %>
+  <%= f.input :phone_number %>
+  <%= f.input :phone_visible, inline_label: 'Yes, organizers can contact me.' %>
+  <%= f.button :submit %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_210619) do
+ActiveRecord::Schema.define(version: 2019_08_06_003415) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -91,8 +91,15 @@ ActiveRecord::Schema.define(version: 2019_08_05_210619) do
     t.string "name"
     t.string "provider"
     t.string "uid"
-    t.string "fullname"
     t.string "image"
+    t.string "phone_number"
+    t.text "description"
+    t.string "headline"
+    t.boolean "phone_visible"
+    t.boolean "email_visible"
+    t.string "birthday_month"
+    t.integer "birthday_date"
+    t.boolean "birthday_visible"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"

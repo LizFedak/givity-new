@@ -15,7 +15,15 @@ $gray-medium-light: #909598;
   box-sizing:         border-box;
 }
 
+#users_menu {
+  background-color: #EFECE7;
+  padding: 10px 10px 10px 10px;
+}
 
+.btn {
+  color: #fff;
+  border-radius: 5px;
+}
 .avatar_small {
   width: 28px;
 }
@@ -34,10 +42,10 @@ $gray-medium-light: #909598;
 
 #body-signup {
   background:url(../../assets/images/green-wall.jpg) no-repeat;
-  padding-top:100px;
-  background-size:cover;
-  background-position: center center;
-  z-index: 0;
+  padding-top:0px;
+  background-size: 50%;
+  background-position: center right;
+
 }
 
 .h-100 {
@@ -107,6 +115,7 @@ textarea {
 
 
 
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -118,6 +127,7 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  font-family: 'Parisienne', cursive;
 }
 
 h2 {
@@ -127,11 +137,13 @@ h2 {
   text-align: left;
   font-weight: normal;
   color: $gray-light;
+  font-family: 'Raleway', sans-serif;
 }
 
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* header */
@@ -183,6 +195,9 @@ footer {
     li {
       float: left;
       margin-left: 15px;
+    }
+    #user-navigation-title {
+      font-weight: bold;
     }
   }
 }

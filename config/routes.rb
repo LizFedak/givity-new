@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :profiles
   resources :volunteer_profiles
   resources :posts
 
@@ -27,8 +26,17 @@ Rails.application.routes.draw do
   get  '/terms', to: 'basic_pages#terms'
   get  '/faq', to: 'basic_pages#faq'
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }, path: '', :path_names => {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'}
   
+  # resources :users, only: [:show]
+
+  resources :users, only: [:update] do
+    member do
+      get 'contact'
+      get 'notification_settings'
+    end
+  end
+
 
   
 

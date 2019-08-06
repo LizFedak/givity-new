@@ -13,7 +13,7 @@
   <%= f.error_notification %>
 
   <div class="form-group">
-  <%= f.text_field :fullname,
+  <%= f.text_field :name,
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "Full name" },
@@ -44,7 +44,11 @@
 <% end %>
 
   <hr data-content="OR" class="my-3 hr-text letter-spacing-2">
-    <button class="btn btn btn-outline-primary btn-block btn-social mb-3"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
+    <button class="btn btn btn-outline-primary btn-block btn-social mb-3"><i class="fa-2x fa-facebook-f fab btn-social-icon">  </i> <span class="d-none d-sm-inline"><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></span></button>
+    
+    
+    
+    
     <button class="btn btn btn-outline-dark btn-block btn-social mb-3"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
   <hr class="my-4">
 

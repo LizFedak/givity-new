@@ -1,0 +1,18 @@
+<nav class="nav-sidebar" id="users_menu">
+    <ul class="list-unstyled components">
+        <li class="user-navigation-title">Settings</li>
+        <li class="nav-item nav-link"><%= link_to 'General', edit_user_registration_path %></li>
+        <li class="nav-item nav-link"><%= link_to 'Privacy', contact_user_path(@user) %></li>
+        <li class="nav-item nav-link"><%= link_to 'Notification Settings', notification_settings_user_path(@user) %></li>
+        <hr>
+        <li class="user-navigation-title">Manage Groups</li>
+        <li class="nav-item nav-link"><%= link_to 'Groups you manage', '#' %></li>
+        <li class="nav-item nav-link"><%= link_to "Groups you're in", '#' %></li>
+        <hr>
+        <li class="user-navigation-title">Volunteer Portal</li>
+        <li class="nav-item nav-link"><%= link_to 'Saved organizations', '#' %></li>
+        <li class="nav-item nav-link"><%= link_to 'Volunteer Profile', edit_volunteer_profile_path(@user) %></li>
+        <li class="nav-item nav-link"><%= link_to 'Request a recommendation', '#' %></li>
+    </ul>
+</nav>
+

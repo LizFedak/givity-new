@@ -264,7 +264,7 @@ Devise.setup do |config|
   require 'omniauth-facebook'
   
 
-  config.omniauth :facebook, ENV["facebook_api_id"], ENV["facebook_api_secret"]
+  config.omniauth :facebook, ENV["facebook_api_id"], ENV["facebook_api_secret"], scope: 'email', info_fields: 'email, name'
 
   config.omniauth :twitter, ENV["twitter_api_id"], ENV["twitter_api_secret"]
 
