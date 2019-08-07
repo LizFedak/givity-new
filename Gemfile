@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "actiontext", require: "action_text"
 gem "image_processing", "~> 1.2"
 
+
 gem 'devise',       '4.6.2'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'

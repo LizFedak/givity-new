@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :experiences 
   has_one :volunteer_profile, :dependent => :destroy
   before_create :create_volunteer_profile
+  has_many :groups
+  has_many :posts
 
   def create_volunteer_profile
     volunteer_profile = build_volunteer_profile(:tagline => "Tagline") 

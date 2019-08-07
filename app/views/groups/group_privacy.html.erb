@@ -1,0 +1,7 @@
+<%= render 'groups/groups_menu' %>
+<h1>Group privacy settings</h1>
+<%= simple_form_for @group do |f| %>
+  <%= f.input :private, as: :boolean, label: "Anyone who lives in the approved locations can find and join this group." %>
+  <%= f.input :private, as: :boolean, label: "Anyone who lives in the approved locations can request to join this group. Only approved members can view group content and members." %>
+  <%= f.button :submit %>
+<% end %>

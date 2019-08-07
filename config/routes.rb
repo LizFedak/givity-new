@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :groups
   resources :volunteer_profiles
   resources :posts
 
@@ -38,6 +39,13 @@ Rails.application.routes.draw do
   end
 
 
+  resources :groups, only: [:update] do
+    member do
+      get 'group_location'
+      get 'group_associations'
+      get 'group_privacy'
+    end
+  end
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

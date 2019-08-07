@@ -1,0 +1,16 @@
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <%= render 'groups/groups_menu' %>
+        </div>
+        <div class="col-sm-10">
+            <h1>Group location settings</h1>
+            <%= simple_form_for @group do |f| %>
+                <%= f.input :city, label: "What is this group's primary location?" %>
+                <p>This will be for selecting what types of locations can find the group.</p>
+                <%= f.button :submit %>
+            <% end %>
+        </div>
+    </div>
+</div>

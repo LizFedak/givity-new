@@ -9,6 +9,7 @@ def index
   @volunteer_profiles = VolunteerProfile.all
 end
 
+
 # GET /volunteer_profiles/1
 # GET /volunteer_profiles/1.json
 def show

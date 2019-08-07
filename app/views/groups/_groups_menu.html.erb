@@ -1,0 +1,16 @@
+<nav class="nav-sidebar" id="users_menu">
+    <ul class="list-unstyled components">
+        <li class="group-navigation-title">Settings</li>
+        <li class="nav-item nav-link"><%= link_to 'General', edit_group_path(@group) %></li>
+        <li class="nav-item nav-link"><%= link_to 'Location', group_location_group_path(@group) %></li>
+        <li class="nav-item nav-link"><%= link_to 'Connected groups', group_associations_group_path(@group) %></li>
+        <li class="nav-item nav-link"><%= link_to 'Privacy', group_privacy_group_path(@group) %></li>
+        <li class="nav-item nav-link"><%= link_to 'Notification Settings', '#' %></li>
+        <hr>
+        <li class="user-navigation-title">Manage Group</li>
+        <li class="nav-item nav-link"><%= link_to 'Requests', '#' %></li>
+        <li class="nav-item nav-link"><%= link_to "Members", '#' %></li>
+        <hr>
+    </ul>
+</nav>
+

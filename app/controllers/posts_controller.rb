@@ -6,12 +6,17 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def my_index
+    @posts = current_user.posts
+  end
+
   def new
     @post = Post.new
   end
 
   def create
-    @post = Post.new(permitted_params)
+    @post = current_user.posts.new(post_params)
+  
     if @post.save
       redirect_to post_path(@post), alert: 'Post created successfully !!'
     else
@@ -26,7 +31,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(permitted_params)
+    if @post.update(post_params)
       redirect_to post_path(@post), alert: 'Post Updated Successfully.'
     else
       render :edit
@@ -41,7 +46,7 @@ class PostsController < ApplicationController
     end
   end
 
-  private def permitted_params
+  private def post_params
     params.require(:post).permit(:title, :body)
   end
 

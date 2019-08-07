@@ -1,0 +1,5 @@
+<%= simple_form_for @group do |f| %>
+  <%= f.input :groupname, label: "Choose a name to describe your group." %>
+  <%= f.input :private, as: :boolean, label: "This is a public group." %>
+  <%= f.button :submit %>
+<% end %>
