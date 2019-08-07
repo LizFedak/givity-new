@@ -1,5 +1,13 @@
 <%= render 'users/users_menu' %>
 <%= simple_form_for @user do |f| %>
+<ul> 
+<li>Who can see your posts?</li>
+<li>Review things you're tagged in?</li>
+<li>Organizations can contact me for volunteer opportunities?</li>
+<li>Who can follow you?</li>
+<li>Who can view your profile?</li>
+<li>Who can send you emails using the email you provided?</li>
+<li>Who can contact you using the phone number you provided?</li>
   <%= f.input :phone_number %>
   <%= f.input :phone_visible, inline_label: 'Yes, organizers can contact me.' %>
   <%= f.button :submit %>

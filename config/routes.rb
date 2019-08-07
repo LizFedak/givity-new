@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get  '/terms', to: 'basic_pages#terms'
   get  '/faq', to: 'basic_pages#faq'
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }, path: '', :path_names => {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'}
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }, path: '', :path_names => {sign_in: 'login', sign_out: 'logout', edit: 'settings', sign_up: 'registration'}
   
   # resources :users, only: [:show]
 
