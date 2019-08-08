@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'relationships/create'
+  get 'relationships/destroy'
   resources :groups
   resources :volunteer_profiles
   resources :posts
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
   get  '/team', to: 'basic_pages#team'
   get  '/terms', to: 'basic_pages#terms'
   get  '/faq', to: 'basic_pages#faq'
+  
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }, path: '', :path_names => {sign_in: 'login', sign_out: 'logout', edit: 'settings', sign_up: 'registration'}
   
@@ -38,6 +41,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :relationships,       only: [:create, :destroy]
+
 
   resources :groups, only: [:update] do
     member do
@@ -46,6 +57,8 @@ Rails.application.routes.draw do
       get 'group_privacy'
     end
   end
+
+  
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_07_170344) do
+ActiveRecord::Schema.define(version: 2019_08_08_180941) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,36 @@ ActiveRecord::Schema.define(version: 2019_08_07_170344) do
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
+    t.index ["following_id"], name: "index_follows_on_following_id"
+  end
+
+  create_table "group_requests", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.text "reason"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id", "user_id"], name: "index_group_requests_on_group_id_and_user_id", unique: true
+    t.index ["group_id"], name: "index_group_requests_on_group_id"
+    t.index ["user_id"], name: "index_group_requests_on_user_id"
+  end
+
+  create_table "group_users", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "owner"
+    t.index ["group_id", "user_id"], name: "index_group_users_on_group_id_and_user_id", unique: true
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "groupname"
     t.integer "user_id"
@@ -72,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_170344) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "city"
+    t.index "\"name\"", name: "index_groups_on_name"
     t.index ["group_category"], name: "index_groups_on_group_category"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
@@ -82,6 +113,16 @@ ActiveRecord::Schema.define(version: 2019_08_07_170344) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -116,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_170344) do
     t.string "birthday_month"
     t.integer "birthday_date"
     t.boolean "birthday_visible"
+    t.string "username"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"
@@ -134,6 +176,8 @@ ActiveRecord::Schema.define(version: 2019_08_07_170344) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "experiences", "users"
+  add_foreign_key "group_requests", "groups"
+  add_foreign_key "group_requests", "users"
   add_foreign_key "groups", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "volunteer_profiles", "users"
