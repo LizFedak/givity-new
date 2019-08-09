@@ -3,8 +3,10 @@ class User < ApplicationRecord
   has_many :experiences 
   has_one :volunteer_profile, :dependent => :destroy
   before_create :create_volunteer_profile
-  has_many :groups
   has_many :posts
+
+  has_many :memberships
+  has_many :groups, through: :memberships
 
   def create_volunteer_profile
     volunteer_profile = build_volunteer_profile(:tagline => "Tagline") 
@@ -33,7 +35,6 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
-
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter]

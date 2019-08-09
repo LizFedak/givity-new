@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_180941) do
+ActiveRecord::Schema.define(version: 2019_08_09_035416) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -62,36 +62,6 @@ ActiveRecord::Schema.define(version: 2019_08_08_180941) do
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.integer "following_id", null: false
-    t.integer "follower_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
-    t.index ["following_id"], name: "index_follows_on_following_id"
-  end
-
-  create_table "group_requests", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "user_id"
-    t.text "reason"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id", "user_id"], name: "index_group_requests_on_group_id_and_user_id", unique: true
-    t.index ["group_id"], name: "index_group_requests_on_group_id"
-    t.index ["user_id"], name: "index_group_requests_on_user_id"
-  end
-
-  create_table "group_users", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "owner"
-    t.index ["group_id", "user_id"], name: "index_group_users_on_group_id_and_user_id", unique: true
-  end
-
   create_table "groups", force: :cascade do |t|
     t.string "groupname"
     t.integer "user_id"
@@ -102,9 +72,15 @@ ActiveRecord::Schema.define(version: 2019_08_08_180941) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "city"
-    t.index "\"name\"", name: "index_groups_on_name"
-    t.index ["group_category"], name: "index_groups_on_group_category"
-    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -176,9 +152,9 @@ ActiveRecord::Schema.define(version: 2019_08_08_180941) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "experiences", "users"
-  add_foreign_key "group_requests", "groups"
-  add_foreign_key "group_requests", "users"
   add_foreign_key "groups", "users"
+  add_foreign_key "memberships", "groups"
+  add_foreign_key "memberships", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "volunteer_profiles", "users"
 end

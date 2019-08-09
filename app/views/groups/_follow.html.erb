@@ -1,0 +1,6 @@
+<%= form_for @group, :url => memberships_path, method: :post do |f| %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :group_id, @group.id %>
+  </div>
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   get 'relationships/create'
   get 'relationships/destroy'
+  get 'memberships/create'
+  get 'memberships/destroy'
   resources :groups
   resources :volunteer_profiles
   resources :posts
@@ -48,7 +50,7 @@ Rails.application.routes.draw do
   end
 
   resources :relationships,       only: [:create, :destroy]
-
+  resources :memberships,       only: [:create, :destroy]
 
   resources :groups, only: [:update] do
     member do
