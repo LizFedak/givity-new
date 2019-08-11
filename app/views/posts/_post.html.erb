@@ -1,0 +1,11 @@
+<td id="post-<%= post.id %>">
+<%= link_to image_tag(avatar_url(current_user), :alt => "User profile image", :class => "avatar_small rounded-circle"), post.user %>
+<span class="user"><%= link_to post.user.name, post.user %></span>
+<span class="content">Title: <%= post.title %></span>
+<span class="content">Content: <%= post.body %></span>
+<span class="timestamp">
+    Posted <%= time_ago_in_words(post.created_at) %> ago.
+</span>
+</td>
+<br>
+<p>tacos</p>

@@ -1,2 +1,8 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="col-md-8">
+    <% if @posts.any? %>
+      <h3>posts (<%= @posts.count %>)</h3>
+      <tr class="posts">
+        <%= render @posts %>
+      </tr>
+    <% end %>
+</div>

@@ -1,2 +1,18 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= link_to posts_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    All Posts
+<% end %>
+<%= link_to edit_post_path(@post), class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+<% end %>
+<h1> Show post </h1>
+
+<dl class="d1-horizontal">
+    <dt>Title:</dt>
+    <dd><%= @post.title %></dd>
+</dl>
+<dl class="dl-horizontal">
+    <dt>Body</dt>
+    <dd><%= @post.body %></dd>
+</dl>
