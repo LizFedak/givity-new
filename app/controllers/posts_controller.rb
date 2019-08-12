@@ -6,9 +6,9 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def my_index
-    @posts = current_user.posts
-  end
+  # def my_index
+  #   @posts = current_user.posts
+  # end
 
   def new
     @post = Post.new
@@ -17,10 +17,14 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
   
-    if @post.save
-      redirect_to post_path(@post), alert: 'Post created successfully !!'
-    else
-      render :new
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -31,30 +35,40 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      redirect_to post_path(@post), alert: 'Post Updated Successfully.'
-    else
-      render :edit
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
+
 
   def destroy
-    if @post.destroy
-      redirect_to posts_path, alert: 'Post destroyed successfully.'
-    else
-      redirect_to posts_path, alert: 'Error occured while destroying.'
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 
-  private def post_params
+  private 
+  
+  def post_params
     params.require(:post).permit(:title, :body)
   end
 
-  private def load_post
+
+  
+  def load_post
     @post = Post.find_by(id: params[:id])
 
     unless @post
       redirect_to posts_path, alert: 'Post Not found !!'
     end
   end
+
 end

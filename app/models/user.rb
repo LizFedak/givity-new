@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  
+  include ActionText::Attachable
+
+
   has_many :experiences 
   has_one :volunteer_profile, :dependent => :destroy
   before_create :create_volunteer_profile
@@ -65,6 +67,10 @@ class User < ApplicationRecord
             end
           end
         end
+
+  def to_trix_content_attachment_partial_path
+    to_partial_path
+  end
       
         private
       
@@ -72,6 +78,6 @@ class User < ApplicationRecord
         "#{auth.uid}-#{auth.provider}@example.com"
         end
   
-        
+  
 
 end

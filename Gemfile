@@ -4,47 +4,32 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0.rc2'
+gem 'rails', '~> 6.0.0.beta2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+gem 'sqlite3', '~> 1.3', '>= 1.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5'
+gem 'sass-rails', '~> 5.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker'
+gem 'webpacker', '>= 4.0.0.rc.3'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
 
+gem 'figaro'
+gem 'simple_form'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
-gem "actiontext", require: "action_text"
-gem "image_processing", "~> 1.2"
-
-
-gem 'devise',       '4.6.2'
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-stripe-connect'
-
-gem 'bootstrap-sass', '3.3.7'
-gem 'bootstrap-will_paginate', '1.0.0'
-gem 'coffee-rails', '4.2.2'
-gem 'jquery-rails', '4.3.1'
-gem 'simple_form'
-gem 'bootsnap', '>= 1.4.2', require: false
-gem 'sib-api-v3-sdk'
-gem "figaro"
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.4.1', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -64,13 +49,27 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'chromedriver-helper'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# group :production do
-#   gem 'pg'
-# end
+gem 'administrate', github: 'excid3/administrate', branch: 'zeitwerk'
+gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+gem 'devise', '~> 4.6', '>= 4.6.1'
+gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
+gem 'devise_masquerade', '~> 0.6.2'
+gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
+gem 'friendly_id', '~> 5.2', '>= 5.2.5'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
+gem 'mini_magick', '~> 4.9', '>= 4.9.2'
+gem 'name_of_person', '~> 1.1'
+gem 'omniauth-facebook', '~> 5.0'
+gem 'omniauth-github', '~> 1.3'
+gem 'omniauth-twitter', '~> 1.4'
+gem 'sidekiq', '~> 5.2', '>= 5.2.5'
+gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
+gem 'whenever', require: false
+
