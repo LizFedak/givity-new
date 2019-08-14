@@ -1,5 +1,16 @@
-<%= simple_form_for @group do |f| %>
-  <%= f.input :groupname, label: "Choose a name to describe your group." %>
-  <%= f.input :private, as: :boolean, label: "This is a public group." %>
-  <%= f.button :submit %>
-<% end %>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <%= render 'groups/groups_menu' %>
+        </div>
+        <div class="col-sm-10">
+            <h1>Edit Group</h1>
+            <%= simple_form_for @group do |f| %>
+              <%= f.input :groupname, label: "Choose a name to describe your group." %>
+              <%= f.input :private, as: :boolean, label: "This is a public group." %>
+              <%= f.button :submit %>
+            <% end %>
+        </div>
+    </div>
+</div>

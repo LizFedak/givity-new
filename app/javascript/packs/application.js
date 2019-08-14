@@ -21,6 +21,19 @@ $(document).on("turbolinks:load", () => {
 
 import "controllers"
 
+import flatpickr from "flatpickr"
+// require("flatpickr/dist/flatpickr.css")
+require("flatpickr/dist/themes/dark.css");
+
+
+document.addEventListener("turbolinks:load", () => {
+    flatpickr("[data-behavior='flatpickr']",{
+        altInput: true,
+        altFormat: "F j Y",
+        dateFormat: "Y-m-d",
+    })
+})
+
 let Trix = window.Trix = require("trix")
 require("@rails/actiontext")
 

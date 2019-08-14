@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :memberships
   has_many :groups, through: :memberships
+  has_many :groups
 
   def create_volunteer_profile
     volunteer_profile = build_volunteer_profile(:tagline => "Tagline") 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_11_165518) do
+ActiveRecord::Schema.define(version: 2019_08_14_174743) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(version: 2019_08_11_165518) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "n_events", force: :cascade do |t|
+    t.string "date"
+    t.string "name"
+    t.text "description"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_n_events_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -155,6 +165,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_165518) do
   add_foreign_key "groups", "users"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
+  add_foreign_key "n_events", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "volunteer_profiles", "users"
 end

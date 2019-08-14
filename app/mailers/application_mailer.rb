@@ -1,7 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  def initialize
-  
-  end
-
-
+  default from: 'from@example.com'
+  layout 'mailer'
 end
