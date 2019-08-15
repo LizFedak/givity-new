@@ -2,8 +2,8 @@ class Memberships < ActiveRecord::Migration[6.0]
   def change
 
 
-    drop_table :group_requests
-    drop_table :group_users
+    # drop_table :group_requests
+    # drop_table :group_users
 
 
 
