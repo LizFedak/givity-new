@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'figaro'
 gem 'simple_form'
 
+gem "react_on_rails"
+
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
